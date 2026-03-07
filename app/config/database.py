@@ -7,3 +7,4 @@ client = AsyncIOMotorClient(settings.MONGO_URI)
 db = client["auth-system"]
 
 user_collection = db["users"]
+notes_collection = db["notes"]

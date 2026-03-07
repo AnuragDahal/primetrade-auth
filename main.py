@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request
-from app.routes import user, auth
+from app.routes import user, auth, notes
 from fastapi.middleware.cors import CORSMiddleware
 from app.config.database import client
 from starlette.middleware.sessions import SessionMiddleware
@@ -40,3 +40,4 @@ def root():
 
 app.include_router(auth.router)
 app.include_router(user.router)
+app.include_router(notes.router)
