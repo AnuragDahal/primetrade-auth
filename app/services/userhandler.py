@@ -12,5 +12,6 @@ class UserManager:
         return send_response(message="User profile fetched successfully", data={
             "name": user_data["name"],
             "email": user_data["email"],
-            "isEmailVerified": user_data["isEmailVerified"]
+            "isEmailVerified": user_data["isEmailVerified"],
+            "role": user_data.get("role", "user")
         })

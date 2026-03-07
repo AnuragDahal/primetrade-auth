@@ -12,7 +12,7 @@ app = FastAPI(title="Auth", version="0.1.0")
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=["http://localhost:5173",
+    allow_origins=["http://localhost:5173", "http://localhost:5174",
                    "http://localhost:8000", "https://auth-xqom.onrender.com"],
     allow_methods=["*"],
     allow_headers=["*"],

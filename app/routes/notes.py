@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, status
 from app.services.notehandler import NoteManager
 from app.config.dependencies import get_current_user, get_admin_user
 from app.models import schemas
