@@ -27,11 +27,9 @@ except Exception as e:
 
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
-    # Customize the response as needed
     return JSONResponse(
         status_code=422,
-        content={
-            "detail": "Invalid email type "},
+        content={"detail": exc.errors()},
     )
 
 

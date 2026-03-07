@@ -1,15 +1,16 @@
 from typing import Annotated
 
 from fastapi import Depends, HTTPException, Request, status
-from fastapi.security import OAuth2PasswordBearer
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from jose import JWTError, jwt, ExpiredSignatureError
 
 from .settings import settings
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="auth/login")
+oauth2_scheme = HTTPBearer()
 
 
-async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]):
+async def get_current_user(creds: Annotated[HTTPAuthorizationCredentials, Depends(oauth2_scheme)]):
+    token = creds.credentials
     if not token:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED, detail="Could not validate credentials")

@@ -1,11 +1,13 @@
-from passlib.hash import bcrypt
+import bcrypt
 
 
 class Encrypt:
     @staticmethod
     def hash_password(password: str) -> str:
-        return bcrypt.hash(password)
+        salt = bcrypt.gensalt()
+        hashed = bcrypt.hashpw(password.encode('utf-8'), salt)
+        return hashed.decode('utf-8')
 
     @staticmethod
     def verify_password(password: str, hash: str) -> bool:
-        return bcrypt.verify(password, hash)
+        return bcrypt.checkpw(password.encode('utf-8'), hash.encode('utf-8'))
