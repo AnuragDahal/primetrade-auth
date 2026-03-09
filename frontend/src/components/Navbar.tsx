@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { LogOut, BookOpen } from 'lucide-react';
@@ -21,7 +20,7 @@ export const Navbar = () => {
       <div className="nav-links">
         {user ? (
           <>
-            <span>Hi, {user.name}</span>
+            <span className="nav-welcome">Hi, {user.name}</span>
             <button className="btn btn-outline" onClick={handleLogout}>
               <LogOut size={16} /> Logout
             </button>
